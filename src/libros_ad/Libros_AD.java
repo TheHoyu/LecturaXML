@@ -22,6 +22,8 @@ public class Libros_AD {
         a.abrirXMLaDOM(f);
         a.recorreDOMyMuestra();
         a.insertarLibroEnDOm("Rambo4", "Stallone", "01/01/2001");
+        a.deleteNode("Don Quijote");
+        a.guardarDomcomoArchivo("XML_nuevo_nombre.xml");
     }
     
 }

@@ -6,6 +6,13 @@ import org.w3c.dom.*;//for Document
 import org.w3c.dom.Document;
 import java.util.*;
 import java.io.*;//clase File
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 public class AccesoDOM {
     Document doc;
@@ -138,8 +145,24 @@ public class AccesoDOM {
         
     }
   
-    void guardarDOmcomoArchivo(String nuevoArchivo){
+    public void guardarDomcomoArchivo(String nuevoArchivo){
         
+        try{
+            Source src = new DOMSource(doc); // DEFINIR ORIGEN
+            StreamResult rst = new StreamResult(new File(nuevoArchivo));
+            //Definimos el resultado
+            //Declaramos el transormer que tiene el método. transform(). que necesitamos
+                        
+            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+            
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            
+            transformer.transform(src, (javax.xml.transform.Result)rst);
+            System.out.println("Archivo creado del DOM con éxito\n");
+            
+        }catch(Exception e){
+              e.printStackTrace();  
+        }
     }
    } 
     
