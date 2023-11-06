@@ -137,6 +137,10 @@ public class AccesoDOM {
         }
         
     }
+  
+    void guardarDOmcomoArchivo(String nuevoArchivo){
+        
+    }
    } 
     
 
